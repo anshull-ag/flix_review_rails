@@ -6,3 +6,11 @@
    </li>
 <%end%><br>
 <%= link_to 'Add New Movie',new_movie_path %>
+<br>
+
+<% if user_signed_in? %>
+  <%= link_to 'Signout',
+  destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'sign In', new_user_session_path %>
+<% end %>
