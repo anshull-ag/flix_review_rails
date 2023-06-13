@@ -1,0 +1,8 @@
+<h1> Welcome to movies hub </h1>
+
+<% @movies.each do |movie|%>
+   <li>
+      <%= link_to movie.name, movie %>
+   </li>
+<%end%><br>
+<%= link_to 'Add New Movie',new_movie_path %>
