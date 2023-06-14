@@ -7,6 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def set_defaults
-    self.role ||= 0
+    self.role ||= :user
   end
+
+  enum :role, {user:0, admin:1}, suffix: true
 end
