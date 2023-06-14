@@ -1,0 +1,29 @@
+<h1> Enter Detail Here </h1>
+
+<%= form_with model: @movie do |form| %>
+	<div>
+		<%= form.label :name %><br>
+		<%= form.text_field :name %>
+	</div>
+
+	<div>
+		<%= form.label :rating %><br>
+		<%= form.text_field :rating %>
+	</div>
+
+	<div>
+		<%= form.label :description %><br>
+		<%= form.text_area :description %>
+	</div>
+
+	<div>
+		<%= form.label :release_date %><br>
+		<%= form.text_field  :release_date %>
+	</div><br>
+
+	<div>
+		<%= form.submit %>
+	</div>
+<% end %>
+
+
