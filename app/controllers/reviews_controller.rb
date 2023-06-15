@@ -11,11 +11,11 @@ class ReviewsController < ApplicationController
   end
 
   def create
-  
     @movie = Movie.find(params[:movie_id])
-    @review = current_user.reviews.create(review_params)
-    if @movie.save
-      redirect_to @movie
+    @review = @movie.reviews.new(review_params)
+    @review.user = current_user 
+    if @review.save
+      redirect_to movie_reviews_path
     else
       render :new
     end

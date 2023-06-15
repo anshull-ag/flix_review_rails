@@ -1,7 +1,6 @@
 <h1> All Reviews </h1>
-
 <% @reviews.each do |review| %>
-  <%= review.body %>
-  <%= review.star %> <br>
+  <h5> body <%= review.body %> </h5>
+  <h5> star <%= review.star %> </h5>
 <% end %>
-    
+<%= link_to 'Back', movie_path(params[:movie_id]) %>
