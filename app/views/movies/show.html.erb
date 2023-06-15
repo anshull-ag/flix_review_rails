@@ -4,7 +4,11 @@
 <p><%= @movie.description %></p>
 <p><%= @movie.release_date %></p>
 
-<% if current_user.role == 'admin' %>
+<% if user_signed_in? %>
+  <% if current_user.role == 'admin' %>
   <%= link_to 'Edit', edit_movie_path%>
+  <% end %>
 <% end %>
-<%= link_to 'Reviews', movie_reviews_path(@movie.id) %>
+<%= link_to 'Show Reviews', movie_reviews_path(@movie.id) %>
+
+<%= link_to ' Write Reviews', new_movie_review_path(@movie.id) %>
