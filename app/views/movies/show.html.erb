@@ -4,4 +4,6 @@
 <p><%= @movie.description %></p>
 <p><%= @movie.release_date %></p>
 
-<%= link_to 'Edit', edit_movie_path%>
+<% if current_user.role == 'admin' %>
+  <%= link_to 'Edit', edit_movie_path%>
+<% end %>
