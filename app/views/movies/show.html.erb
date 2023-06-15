@@ -7,3 +7,4 @@
 <% if current_user.role == 'admin' %>
   <%= link_to 'Edit', edit_movie_path%>
 <% end %>
+<%= link_to 'Reviews', movie_reviews_path(@movie.id) %>
