@@ -1,4 +1,4 @@
 class Review < ApplicationRecord
   belongs_to :movie
-  has_one :user, through: :movie
+  belongs_to :user
 end

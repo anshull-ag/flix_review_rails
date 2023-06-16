@@ -1,0 +1,17 @@
+<h1> Write Review Here </h1>
+
+<%= form_for [@movie,@review] do |form| %>
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%= form.label :star %><br>
+    <%= form.text_field :star %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -19,22 +19,20 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.create(movie_params)
-
-      if @movie.save
-        redirect_to @movie
-      else
-        render :new
-      end
+    if @movie.save
+      redirect_to @movie
+    else
+      render :new
+    end
   end
 
   def update
     @movie = Movie.find(params[:id])
-
-      if @movie.update(movie_params)
-        redirect_to @movie
-      else
-        render :edit, status: :unproccessable_entity
-      end
+    if @movie.update(movie_params)
+      redirect_to @movie
+    else
+      render :edit, status: :unproccessable_entity
+    end
   end
 
   private
@@ -42,5 +40,4 @@ class MoviesController < ApplicationController
   def movie_params
     params.require(:movie).permit(:name, :rating, :description, :release_date)
   end 
-
 end
