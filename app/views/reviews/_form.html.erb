@@ -1,0 +1,17 @@
+<%= form_for [@movie,@review] do |form| %>
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body%>
+  </div>
+
+  <div>
+    <%= form.label :star %><br>
+    <%= form.collection_radio_buttons :star, [[1], [2], [3], [4], [5]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
+      <%= b.radio_button + b.label {''} %>
+      <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
