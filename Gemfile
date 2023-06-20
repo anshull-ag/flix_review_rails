@@ -31,6 +31,8 @@ gem 'bootstrap', '~> 5.1.3'
 # ...
 gem "byebug"
 
+gem "font-awesome-rails"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
