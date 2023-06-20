@@ -8,7 +8,7 @@
 
 <% if user_signed_in?%>
   <% if current_user.role == 'admin' %>
-    <%= link_to 'Add New Movie',new_movie_path %>
+    <%= link_to 'Add New Movie',new_movie_path ,class: "btn btn-primary btn-sm" %>
   <% end %> 
 <% end %>
 
