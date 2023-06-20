@@ -2,17 +2,23 @@
 <label for="">Movie name  : <%= @movie.name%> </label><br>
 <label for="">Rating      : <%= @movie.rating %> </label><br>
 <label for="">Description : <%= @movie.description %> </label><br>
-<label for="">Release Date: <%= @movie.release_date %> </label><br>
+<label for="">Released Date: <%= @movie.released_date %> </label><br>
 
 <% if user_signed_in? %>
   <% if current_user.role == 'admin' %>
-  <%= link_to 'Edit', edit_movie_path, class: "btn btn-dark btn-sm"%>
-  <%= link_to 'Delete', movie_path(id: @movie), class: "btn btn-danger btn-sm", data: {
-    turbo_method: :delete,
-    turbo_confirm: 'Are You Sure?'}%>
+    <%= link_to 'Edit', edit_movie_path, class: "btn btn-dark btn-sm"%>
+    <%= link_to 'Delete', movie_path(id: @movie), class: "btn btn-danger btn-sm", data: {
+      turbo_method: :delete,
+      turbo_confirm: 'Are You Sure?'}%>
   <% end %>
 <% end %>
 <%= link_to 'Show Reviews', movie_reviews_path(@movie.id), class: "btn btn-primary btn-sm"%>
 <% if user_signed_in? && current_user.role == 'user' %>
   <%= link_to ' Write Reviews', new_movie_review_path(@movie.id), class: "btn btn-dark btn-sm"%>
+<% end %><br><br>
+
+<% if user_signed_in?%>
+  <% if current_user.role == 'admin' %>
+    <%= link_to 'Add New Movie',new_movie_path, class: "btn btn-dark btn-sm" %>
+  <% end %> 
 <% end %>
