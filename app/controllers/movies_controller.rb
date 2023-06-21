@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :movie_find, except:[:index, :new, :create]
+  before_action :movie_find, except:[:index, :new, :create,:upcoming_movies]
   
   def index
     @movies =  Movie.all
@@ -34,9 +34,14 @@ class MoviesController < ApplicationController
   end
 
   def destroy 
+    @movie = Movie.find(params[:id])
     @movie.destroy
     flash[:notice]  = "Movie Deleted Successfully...!!"
     redirect_to movies_url, status: :see_other
+  end
+
+  def upcoming_movies
+    @movies = Movie.where('released_date > ?', Date.today)
   end
 
   private
@@ -46,6 +51,6 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
-    params.require(:movie).permit(:name, :rating, :description, :release_date)
+    params.require(:movie).permit(:name, :rating, :description, :released_date, :catogery_id)
   end 
 end
