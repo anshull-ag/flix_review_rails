@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Flix</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,6 +13,16 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="http://127.0.0.1:3000/movies/upcoming_movies">Upcoming Movies</a>
           </li>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Category
+            </button>
+            <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+              <% Category.all.each do |category| %>
+                <%= link_to category.name, movies_url(category: category.name) %><br>
+              <% end %>
+            </div>
+          </div>
         </ul>
       </div>
         <class="right">
