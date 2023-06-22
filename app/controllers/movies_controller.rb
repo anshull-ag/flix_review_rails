@@ -3,7 +3,13 @@ class MoviesController < ApplicationController
   before_action :movie_find, except:[:index, :new, :create,:upcoming_movies]
   
   def index
-    @movies =  Movie.all
+    if 
+      params[:category].blank?
+      @movies =  Movie.all
+    else
+      @category_id = Category.find_by(name: params[:category]).id
+      @movies = Movie.where(category_id: @category_id)
+    end
   end
 
   def show

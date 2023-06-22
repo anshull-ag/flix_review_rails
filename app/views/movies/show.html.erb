@@ -1,11 +1,14 @@
-<h2> Movie Details are.....</h2>
-<%= image_tag @movie.main_image, size:'10*10'%> </label><br>
-<label for="">Movie name  : <%= @movie.name%> </label><br>
-<label for="">Rating      : <%= @movie.rating %> </label><br>
-<label for="">Description : <%= @movie.description %> </label><br>
-<label for="">Released Date: <%= @movie.released_date %> </label><br>
-
-<% if user_signed_in? %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag @movie.main_image, class: 'img-fixed-size' %>
+    </div>
+    <div class="col-md-6">
+      <label for="">Movie name  : <%= @movie.name%> </label><br>
+      <label for="">Rating      : <%= @movie.rating %> </label><br>
+      <label for="">Description : <%= @movie.description %> </label><br>
+      <label for="">Released Date: <%= @movie.released_date %> </label><br>
+      <% if user_signed_in? %>
   <% if current_user.role == 'admin' %>
     <%= link_to 'Edit', edit_movie_path, class: "btn btn-dark btn-sm"%>
     <%= link_to 'Delete', movie_path(id: @movie), class: "btn btn-danger btn-sm", data: {
@@ -23,3 +26,8 @@
     <%= link_to 'Add New Moviee', new_movie_path, class: "btn btn-primary btn-sm" %>
   <% end %> 
 <% end %>
+
+    </div>
+  </div>
+</div>
+

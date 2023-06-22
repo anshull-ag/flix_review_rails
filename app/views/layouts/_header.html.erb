@@ -14,19 +14,19 @@
             <a class="nav-link active" aria-current="page" href="http://127.0.0.1:3000/movies/upcoming_movies">Upcoming Movies</a>
           </li>
           <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Category
+            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Category
             </button>
-            <div class="dropdown-menu" aria-labelledby="categoryDropdown">
-              <% Category.all.each do |category| %>
+            <ul class="dropdown-menu">
+               <% Category.all.each do |category| %>
                 <%= link_to category.name, movies_url(category: category.name) %><br>
-              <% end %>
-            </div>
+               <% end %>
+            </ul>
           </div>
-        </ul>
       </div>
         <class="right">
           <% if user_signed_in? %>
+          <%=  current_user.name %>
           <%= link_to "Account Settings",edit_user_registration_path(current_user),class: "btn btn-info" %>
           <%= link_to "Log Out!",destroy_user_session_path,method: :delete, class: "btn btn-danger"%>
         <% else %>
