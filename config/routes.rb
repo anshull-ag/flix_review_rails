@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "movies#index"
   get '/movies/upcoming_movies', to: 'movies#upcoming_movies'
+  get '/movies/recent_movies', to: 'movies#recent_movies'
   
   resources :movies do
-    resources :reviews
+    resources :reviews 
   end
 
 end

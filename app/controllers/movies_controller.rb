@@ -1,14 +1,13 @@
 class MoviesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :movie_find, except:[:index, :new, :create,:upcoming_movies]
+  before_action :movie_find, except:[:index, :new, :create,:upcoming_movies,:recent_movies]
   
   def index
-    if 
-      params[:category].blank?
+    if params[:category].blank?
       @movies =  Movie.all
     else
-      @category_id = Category.find_by(name: params[:category]).id
-      @movies = Movie.where(category_id: @category_id)
+      category_id = Category.find_by(name: params[:category]).id
+      @movies = Movie.where(category_id: category_id)
     end
   end
 
@@ -48,6 +47,10 @@ class MoviesController < ApplicationController
 
   def upcoming_movies
     @movies = Movie.where('released_date > ?', Date.today)
+  end
+
+  def recent_movies
+    @movies = Movie.where('released_date < ?', Date.today).order('released_date desc').limit(5)
   end
 
   private

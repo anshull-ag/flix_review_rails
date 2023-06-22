@@ -1,15 +1,19 @@
-<h1> All Reviews </h1>
-<% @reviews.each do |review| %>
-  <label for="">Body  : <%= review.body %> </label><br>
-  <label for="">Star  : <%= review.star %> </label><br>
-  <% if user_signed_in? %>
-    <% if current_user.role == 'admin' %>
-      <%= link_to 'Edit Review', edit_movie_review_path(@movie.id,review.id) %><br>
-    <% end %>
-    <% if current_user.role == 'user' && current_user.id == review.user_id %>
-      <%= link_to 'Edit ', edit_movie_review_path(@movie.id,review.id), class: "btn btn-primary btn-sm" %> 
-      <%= link_to "Delete Review",movie_review_path(@movie,review.id), class: "btn btn-danger btn-sm",
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure delete review ?"} %><br><br>
+<% if @movie.reviews.count == 0 %>
+  <h1> No Review Yet </h1>
+<% else %>
+  <h1> Total Reviews are <%= @movie.reviews.count %> </h1>
+  <% @reviews.each do |review| %>
+    <label for="">Body  : <%= review.body %> </label><br>
+    <label for="">Star  : <%= review.star %> </label><br>
+    <% if user_signed_in? %>
+      <% if current_user.role == 'admin' %>
+        <%= link_to 'Edit Review', edit_movie_review_path(@movie.id,review.id) %><br>
+      <% end %>
+      <% if current_user.role == 'user' && current_user.id == review.user_id %>
+        <%= link_to 'Edit ', edit_movie_review_path(@movie.id,review.id), class: "btn btn-primary btn-sm" %> 
+        <%= link_to "Delete Review",movie_review_path(@movie,review.id), class: "btn btn-danger btn-sm",
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure delete review ?"} %><br><br>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
