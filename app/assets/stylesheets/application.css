@@ -2,3 +2,25 @@
   width: 400px;
   height: 500px;
 }
+
+/* Styles for the movie grid */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+/* Styles for each movie item */
+.movie-item {
+  text-align: center;
+}
+
+/* Styles for movie images */
+.movie-image {
+  max-width: 100%;
+  height: auto;
+  width: 300px; /* Adjust the width as desired */
+  height: 400px; /* Adjust the height as desired */
+  object-fit: cover;
+}
+

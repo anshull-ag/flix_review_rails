@@ -1,14 +1,16 @@
-<h1> Welcome to movies hub </h1>
-
-<% @movies.each do |movie|%>
-   <li>
-      <%= link_to movie.name, movie %>
-   </li>
-<%end%><br><br>
-
+<h1> Welcome to Movies Hub </h1>
 <% if user_signed_in?%>
   <% if current_user.role == 'admin' %>
     <%= link_to 'Add New Movie',new_movie_path ,class: "btn btn-primary btn-sm" %>
   <% end %> 
 <% end %>
+<div class="movie-grid">
+  <% @movies.each do |movie| %>
+    <div class="movie-item">
+      <h2><%= movie.name %></h2>
+      <%= link_to image_tag(movie.main_image,class: 'movie-image'),movie %>
+    </div>
+  <% end %>
+</div>
+
 
