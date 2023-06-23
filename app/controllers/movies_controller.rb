@@ -46,11 +46,11 @@ class MoviesController < ApplicationController
   end
 
   def upcoming_movies
-    @movies = Movie.where('released_date > ?', Date.today)
+    @movies = Movie.where('released_date > ?', Date.today).order(released_date:'asc')
   end
 
   def recent_movies
-    @movies = Movie.where('released_date < ?', Date.today).order('released_date desc').limit(5)
+    @movies = Movie.where('released_date < ?', Date.today).order('released_date desc').limit(6)
   end
 
   private
