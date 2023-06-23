@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :movie_setup
-
+  before_action :has_reviewed, only: :new
+  
   def index
     @reviews = @movie.reviews.all
   end
@@ -23,6 +24,9 @@ class ReviewsController < ApplicationController
     @review = @movie.reviews.find(params[:id])
   end
 
+  def show
+    @review = @movie.reviews.find(params[:id])
+  end
   def update 
     @review = @movie.reviews.find(params[:id])
     if @review.update(review_params)
@@ -34,6 +38,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @review = @movie.reviews.find(params[:id])
     @review.destroy
     flash[:notice]  = "Review Deleted Successfully...!!"
     redirect_to movie_reviews_url, status: :see_other
@@ -43,6 +48,13 @@ class ReviewsController < ApplicationController
 
   def movie_setup
     @movie = Movie.find(params[:movie_id])
+  end
+
+  def has_reviewed
+    if Review.where(user_id: current_user.id, movie_id: @movie.id).any?
+      redirect_to movie_reviews_url(@movie.id)
+      flash[:notice] = "You've already written a review for this movie."
+    end
   end
 
   def review_params

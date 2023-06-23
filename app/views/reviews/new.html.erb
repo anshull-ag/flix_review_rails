@@ -8,7 +8,7 @@
 
   <div>
     <%= form.label :star %><br>
-    <%= form.collection_radio_buttons :star, [[5], [4], [3], [2], [1]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
+    <%= form.collection_radio_buttons :star, [[1], [2], [3], [4], [5]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
       <%= b.radio_button + b.label {''} %>
       <% end %>
   </div>

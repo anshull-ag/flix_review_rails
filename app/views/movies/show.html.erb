@@ -1,9 +1,13 @@
-<h2> Movie Details are.....</h2>
-<label for="">Movie name  : <%= @movie.name%> </label><br>
-<label for="">Rating      : <%= @movie.rating %> </label><br>
-<label for="">Description : <%= @movie.description %> </label><br>
-<label for="">Released Date: <%= @movie.released_date %> </label><br>
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag @movie.main_image, class: 'img-fixed-size' %>
+    </div>
+    <div class="col-md-6">
+      <label for="">Movie name  : <%= @movie.name%> </label><br>
+      <label for="">Rating      : <%= @movie.rating %> </label><br>
+      <label for="">Description : <%= @movie.description %> </label><br>
+      <label for="">Released Date: <%= @movie.released_date %> </label><br>
 <% if user_signed_in? %>
   <% if current_user.role == 'admin' %>
     <%= link_to 'Edit', edit_movie_path, class: "btn btn-dark btn-sm"%>
@@ -14,7 +18,7 @@
 <% end %>
 <%= link_to 'Show Reviews', movie_reviews_path(@movie.id), class: "btn btn-primary btn-sm"%>
 <% if user_signed_in? && current_user.role == 'user' %>
-  <%= link_to ' Write Reviews', new_movie_review_path(@movie.id), class: "btn btn-dark btn-sm"%>
+  <%= link_to ' Write Reviews', new_movie_review_path(@movie.id,@review), class: "btn btn-dark btn-sm"%>
 <% end %><br><br>
 
 <% if user_signed_in?%>
@@ -22,3 +26,8 @@
     <%= link_to 'Add New Moviee', new_movie_path, class: "btn btn-primary btn-sm" %>
   <% end %> 
 <% end %>
+
+    </div>
+  </div>
+</div>
+
