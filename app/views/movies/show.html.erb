@@ -8,6 +8,7 @@
       <span style="color: white"><label for="">Rating      : <%= @movie.rating %> </label></span><br>
       <span style="color: white"><label for="">Description : <%= @movie.description %> </label></span><br>
       <span style="color: white"><label for="">Released Date: <%= @movie.released_date %> </label></span><br>
+      <span style="color: white"><label for="">Star Cast: <%= @movie.star_cast %> </label></span><br>
 <% if user_signed_in? %>
   <% if current_user.role == 'admin' %>
     <%= link_to 'Edit', edit_movie_path, class: "btn btn-dark btn-sm"%>
