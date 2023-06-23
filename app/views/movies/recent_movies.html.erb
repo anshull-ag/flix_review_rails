@@ -1,7 +1,7 @@
 <div class="movie-grid">
   <% @movies.each do |movie| %>
     <div class="movie-item">
-      <h2><%= movie.name %></h2>
+      <h2 style="color: white"><%= movie.name %></h2>
       <%= link_to image_tag(movie.main_image,class: 'movie-image'),movie %>
     </div>
   <% end %>
