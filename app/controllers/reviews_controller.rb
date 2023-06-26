@@ -52,7 +52,8 @@ class ReviewsController < ApplicationController
 
   def has_reviewed
     if Review.where(user_id: current_user.id, movie_id: @movie.id).any?
-      redirect_to movie_reviews_url(@movie.id)
+      review = Review.where(user_id: current_user.id, movie_id: @movie.id)
+      redirect_to movie_review_url(@movie.id,review.first.id)
       flash[:notice] = "You've already written a review for this movie."
     end
   end

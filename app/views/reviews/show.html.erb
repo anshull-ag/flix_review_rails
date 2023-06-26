@@ -2,8 +2,8 @@
     <label for="">Star  : <%= @review.star %> </label><br>
     <% if user_signed_in? %>
       <% if current_user.role == 'user' && current_user.id == @review.user_id %>
-        <%= link_to 'Edit ', edit_movie_review_path(@movie.id,review.id), class: "btn btn-primary btn-sm" %> 
-        <%= link_to "Delete Review",movie_review_path(@movie,review.id), class: "btn btn-danger btn-sm",
+        <%= link_to 'Edit ', edit_movie_review_path(@movie.id,@review.id), class: "btn btn-primary btn-sm" %> 
+        <%= link_to "Delete Review",movie_review_path(@movie,@review.id), class: "btn btn-danger btn-sm",
           data: {turbo_method: :delete, turbo_confirm: "Are you sure delete review ?"} %><br><br>
       <% end %>
     <% end %>

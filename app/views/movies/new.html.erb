@@ -1,39 +1,46 @@
-<h1> Enter Detail Here </h1>
+<div class="body">
+
+<h1 style="color: white"> Enter Detail Here </h1>
 
 <%= form_with model: @movie do |form| %>
   <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
+    <span style="color: white"><%= form.label :name %><br>
+    <%= form.text_field :name %></span>
   </div>
 
   <div>
-    <%= form.label :rating %><br>
-    <%= form.text_field :rating %>
+    <span style="color: white"><%= form.label :rating %><br>
+    <%= form.text_field :rating %></span>
   </div>
 
   <div>
-    <%= form.label :description %><br>
-    <%= form.text_area :description %>
+    <span style="color: white"><%= form.label :description %><br>
+    <%= form.text_area :description %></span>
   </div>
 
   <div>
-    <%= form.label :released_date %><br>
-    <%= form.date_field  :released_date %>
+    <span style="color: white"><%= form.label :released_date %><br>
+    <%= form.date_field  :released_date %></span>
   </div><br>
 
   <div class="field">
-    <%= form.label :category_id %>
-    <%= form.collection_select :category_id, Category.all, :id, :name %>
+    <span style="color: white"><%= form.label :category_id %>
+    <%= form.collection_select :category_id, Category.all, :id, :name %></span>
   </div><br>
 
   <div>
-    <%= form.label :main_image %>
-    <%= form.file_field :main_image %>
+    <span style="color: white"><%= form.label :star_cast %><br>
+    <%= form.text_field :star_cast %></span>
+  </div>
+
+  <div>
+    <span style="color: white"><%= form.label :main_image %>
+    <%= form.file_field :main_image %></span>
   <div><br>
     
   <div>
-    <%= form.submit %>
+     <span style="color: white"><%= form.submit %></span>
   </div>
 <% end %>
-
-
+</div>
+</div>
