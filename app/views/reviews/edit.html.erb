@@ -1,19 +1,19 @@
-<h1> Edit Review </h1>
+<div class="reviews-container-left"><br>
+<h1 class="black-heading"> Edit Review </h1>
 
 <%= form_for [@movie,@review] do |form| %>
   <div>
-    <%= form.label :body %><br>
+    <%= form.label :body,  style: "color: white"; %><br>
     <%= form.text_area :body%>
   </div>
 
-  <div>
-    <%= form.label :star %><br>
-    <%= form.collection_radio_buttons :star, [[1], [2], [3], [4], [5]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
-      <%= b.radio_button + b.label {''} %>
-      <% end %>
+ <div>
+    <%= form.label :star, style: "color: white" ; %><br>
+    <%= form.number_field :star, in: 0..5, step: 0.5 %>
   </div>
 
   <div>
     <%= form.submit %>
   </div>
 <% end %>
+</div>

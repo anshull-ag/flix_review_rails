@@ -1,37 +1,38 @@
+<div class="reviews-container-left"><br><br>
 <%= form_with model: @movie do |form| %>
     <div>
-      <%= form.label :name %><br>
+      <%= form.label :name,style: "color: white;" %><br>
       <%= form.text_field :name %>
     </div>
   
     <div>
-      <%= form.label :rating %><br>
+      <%= form.label :rating ,style: "color: white;"%><br>
       <%= form.text_field :rating %>
     </div>
 
     <div>
-      <%= form.label :description %><br>
+      <%= form.label :description,style: "color: white;" %><br>
       <%= form.text_field :description %>
     </div>
 
     <div>
-      <%= form.label :released_date %><br>
+      <%= form.label :released_date,style: "color: white;" %><br>
       <%= form.date_field :released_date%>
     </div>
 
     <div class="field">
-      <%= form.label :category_id %>
+      <%= form.label :category_id,style: "color: white;" %>
       <%= form.collection_select :category_id, Category.all, :id, :name %>
     </div><br>
 
     <div>
-      <span style="color: white"><%= form.label :star_cast %><br>
+      <span style="color: white"><%= form.label :star_cast ,style: "color: white;"%><br>
       <%= form.text_field :star_cast %></span>
     </div>
 
 
     <div>
-      <%= form.label :main_image %>
+      <%= form.label :main_image,style: "color: white;" %>
       <%= form.file_field :main_image %>
     <div><br>
 
@@ -39,3 +40,4 @@
     <%= form.submit %>
     </div>
 <% end %>
+</div>
