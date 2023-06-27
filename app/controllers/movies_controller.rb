@@ -3,6 +3,9 @@ class MoviesController < ApplicationController
   before_action :movie_find, except:[:index, :new, :create,:upcoming_movies,:recent_movies]
   
   def index
+    if params[:filter] == 'upcoming_movies'
+      @movies = Movie.where('released_date > ?', Date.today).order(released_date:'asc')
+    end
     if params[:category].blank?
       @movies =  Movie.all
     else
