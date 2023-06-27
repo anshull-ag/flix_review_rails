@@ -16,6 +16,9 @@
          <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="http://127.0.0.1:3000/?filter=popular">Popular</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="http://127.0.0.1:3000/?filter=recent_movies">Recent</a>
+          </li>
           <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Category
@@ -26,9 +29,7 @@
                <% end %>
             </ul>
           </div>
-           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="http://127.0.0.1:3000/?filter=recent_movies">Recent</a>
-          </li>
+           
       </div>
         <class="right">
           <% if user_signed_in? %>
