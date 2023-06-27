@@ -5,8 +5,11 @@ class MoviesController < ApplicationController
   def index
     if params[:filter] == 'upcoming_movies'
       @movies = Movie.where('released_date > ?', Date.today).order(released_date:'asc')
-    end
-    if params[:category].blank?
+    elsif params[:filter] == 'popular'
+      @movies = Movie.joins(:reviews).group('movies.id').having('AVG(reviews.star) > ?',3.5)
+    elsif params[:filter] == 'recent_movies'
+      @movies = Movie.where('released_date < ?', Date.today).order('released_date desc').limit(6)
+    elsif params[:category].blank?
       @movies =  Movie.all
     else
       category_id = Category.find_by(name: params[:category]).id
@@ -46,14 +49,6 @@ class MoviesController < ApplicationController
     @movie.destroy
     flash[:notice]  = "Movie Deleted Successfully...!!"
     redirect_to movies_url, status: :see_other
-  end
-
-  def upcoming_movies
-    @movies = Movie.where('released_date > ?', Date.today).order(released_date:'asc')
-  end
-
-  def recent_movies
-    @movies = Movie.where('released_date < ?', Date.today).order('released_date desc').limit(6)
   end
 
   private
