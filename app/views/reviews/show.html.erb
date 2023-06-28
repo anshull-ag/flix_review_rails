@@ -1,5 +1,6 @@
-<label for="">Body  : <%= @review.body %> </label><br>
-<label for="">Star  : <%= @review.star %> </label><br>
+<div class="reviews-container-left"><br>
+<span style="color: white"><label for="">Body  : <%= @review.body %> </label></span><br>
+     <span style="color: white"><label for="">Star  : <%= @review.star %> </label></span><br>
   <% if user_signed_in? %>
     <% if current_user.role == 'user' && current_user.id == @review.user_id %>
       <%= link_to 'Edit ', edit_movie_review_path(@movie.id,@review.id), class: "btn btn-primary btn-sm" %> 
@@ -8,3 +9,4 @@
     <% end %>
   <% end %>
 <%= link_to 'Back', movie_path(params[:movie_id]),class: "btn btn-secondary btn-sm"%>
+</div>

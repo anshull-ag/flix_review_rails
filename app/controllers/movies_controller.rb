@@ -3,14 +3,16 @@ class MoviesController < ApplicationController
   before_action :movie_find, except:[:index, :new, :create,:upcoming_movies,:recent_movies]
   
   def index
-    if params[:category].blank?
-      @movies =  Movie.all
-    else
+    if params[:filter]
+      @movies = set_movie
+    elsif params[:category]
       category_id = Category.find_by(name: params[:category]).id
       @movies = Movie.where(category_id: category_id)
+    else
+      @movies =  Movie.all
     end
   end
-
+  
   def show
   end
 
@@ -45,15 +47,18 @@ class MoviesController < ApplicationController
     redirect_to movies_url, status: :see_other
   end
 
-  def upcoming_movies
-    @movies = Movie.where('released_date > ?', Date.today).order(released_date:'asc')
-  end
-
-  def recent_movies
-    @movies = Movie.where('released_date < ?', Date.today).order('released_date desc').limit(6)
-  end
-
   private
+
+  def set_movie
+    if params[:filter] == 'upcoming_movies'
+      @movies = Movie.where('released_date > ?', Date.today).order(released_date:'asc')
+    elsif params[:filter] == 'popular'
+      @movies = Movie.joins(:reviews).group('movies.id').having('AVG(reviews.star) > ?',3.5)
+    elsif params[:filter] == 'recent_movies'
+      @movies = Movie.where('released_date < ?', Date.today).order('released_date desc').limit(6)
+    end
+    
+  end
 
   def movie_find
     @movie = Movie.find(params[:id])
