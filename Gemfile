@@ -35,6 +35,10 @@ gem "font-awesome-rails"
 gem 'shrine', '~> 3.3'
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
 
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
+
+
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
