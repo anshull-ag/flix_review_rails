@@ -1,6 +1,8 @@
 class MoviesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+
   before_action :movie_find, except:[:index, :new, :create,:upcoming_movies,:recent_movies,:search]
+   load_and_authorize_resource
   
   def index
     if params[:filter]
@@ -20,7 +22,9 @@ class MoviesController < ApplicationController
   end
 
   def new 
-    @movie = Movie.new()
+    if current_user.role == 'admin'
+      @movie = Movie.new
+    end
   end
 
   def create
