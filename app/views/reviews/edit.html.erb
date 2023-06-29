@@ -1,6 +1,12 @@
 <div class="reviews-container-left"><br>
 <h1 class="black-heading"> Edit Review </h1>
 
+<% if flash[:error] %>
+  <div style="color: red;">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
 <%= form_for [@movie,@review] do |form| %>
   <div>
     <%= form.label :Review,  style: "color: white"; %><br>
