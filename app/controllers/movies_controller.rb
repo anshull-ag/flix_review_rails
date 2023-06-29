@@ -1,9 +1,9 @@
 class MoviesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-
   before_action :movie_find, except:[:index, :new, :create,:upcoming_movies,:recent_movies,:search]
-   load_and_authorize_resource
-  
+
+  load_and_authorize_resource
+ 
   def index
     if params[:filter]
       @movies = set_movie
@@ -17,6 +17,7 @@ class MoviesController < ApplicationController
   
   def show
   end
+
 
   def edit
   end
@@ -32,7 +33,8 @@ class MoviesController < ApplicationController
     if @movie.save
       redirect_to @movie
     else
-      render :new
+      flash[:error] = @movie.errors.full_messages.join(', ')
+      render 'new'
     end
   end
 
@@ -40,6 +42,7 @@ class MoviesController < ApplicationController
     if @movie.update(movie_params)
       redirect_to @movie
     else
+      flash[:error] = @review.errors.full_messages.join(', ')
       render :edit, status: :unproccessable_entity
     end
   end

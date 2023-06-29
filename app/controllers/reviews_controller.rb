@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   before_action :has_reviewed, only: :new
   
   def index
-    @reviews = @movie.reviews.order
+    @reviews = @movie.reviews.all
   end
 
   def new 
@@ -16,7 +16,8 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to movie_reviews_path
     else
-      render :new
+      flash[:error] = @review.errors.full_messages.join(', ')
+      render 'new'
     end
   end
 
@@ -31,8 +32,9 @@ class ReviewsController < ApplicationController
     @review = @movie.reviews.find(params[:id])
     if @review.update(review_params)
       flash[:notice] = "Review successfully updated!"
-    redirect_to   movie_reviews_path(@movie,@review)
+      redirect_to   movie_reviews_path(@movie,@review)
     else
+      flash[:error] = @review.errors.full_messages.join(',')
       render :new, status: :unprocessable_entity
     end
   end
