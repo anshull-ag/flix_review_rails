@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   before_action :has_reviewed, only: :new
   
   def index
-    @reviews = @movie.reviews.all
+    @reviews = @movie.reviews.order
   end
 
   def new 

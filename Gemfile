@@ -31,6 +31,8 @@ gem 'bootstrap', '~> 5.1.3'
 # ...
 gem "byebug"
 
+gem "cancancan"
+
 gem "font-awesome-rails"
 gem 'shrine', '~> 3.3'
 gem 'image_processing', '~> 1.12', '>= 1.12.1'

@@ -1,6 +1,8 @@
 class MoviesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :movie_find, except:[:index, :new, :create,:upcoming_movies,:recent_movies]
+
+  before_action :movie_find, except:[:index, :new, :create,:upcoming_movies,:recent_movies,:search]
+   load_and_authorize_resource
   
   def index
     if params[:filter]
@@ -20,7 +22,9 @@ class MoviesController < ApplicationController
   end
 
   def new 
-    @movie = Movie.new()
+    if current_user.role == 'admin'
+      @movie = Movie.new
+    end
   end
 
   def create
@@ -43,8 +47,20 @@ class MoviesController < ApplicationController
   def destroy 
     @movie = Movie.find(params[:id])
     @movie.destroy
-    flash[:notice]  = "Movie Deleted Successfully...!!"
+    flash[:notice]  = "Movie Deleted Successfully!"
     redirect_to movies_url, status: :see_other
+  end
+
+  def search
+    movie = params[:search]
+    @search = Movie.where('name LIKE ?', "%#{movie}%")
+                     
+    if @search.present?
+      render 'search'
+    else
+      flash.now[:alert] = 'No movies found matching the search criteria.'
+      render 'search'
+    end
   end
 
   private
@@ -57,7 +73,6 @@ class MoviesController < ApplicationController
     elsif params[:filter] == 'recent_movies'
       @movies = Movie.where('released_date < ?', Date.today).order('released_date desc').limit(6)
     end
-    
   end
 
   def movie_find
