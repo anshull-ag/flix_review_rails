@@ -14,8 +14,11 @@ class User < ApplicationRecord
   end
 
   def welcome_email
-    UserMailer.user_confirmation_email(self).deliver_now
+    UserMailer.user_confirmation_email(self).tap do |mail|
+      mail.subject = 'Confirmation Email'
+      mail.deliver_now
+    end
   end
-
+  
   enum :role, {user:0, admin:1}, suffix: true
 end
