@@ -1,8 +1,9 @@
 <div class="reviews-container-left"><br>
-<% if @movie.reviews.count == 0 %>
-  <h1 class="black-heading"> No Review Yet </h1>
-<% else %>
-  <h1 class="black-heading">Total Reviews are <%= @movie.reviews.count %></h1>
+  <% if @movie.reviews.count == 0 %>
+    <h1 class="black-heading"> No Review Yet </h1>
+  <% else %>
+    <h1 class="black-heading">Total Reviews are <%= @movie.reviews.count %></h1>
+  <% end %>
 
   <% @reviews.each do |review| %>
      <span style="color: white"><label for="">Body  : <%= review.body %> </label></span><br>
@@ -14,10 +15,9 @@
       <% if current_user.role == 'user' && current_user.id == review.user_id %>
         <%= link_to 'Edit ', edit_movie_review_path(@movie.id,review.id), class: "btn btn-primary btn-sm" %> 
         <%= link_to "Delete Review",movie_review_path(@movie,review.id), class: "btn btn-danger btn-sm",
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure delete review ?"} %><br><br>
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure delete review ?" } %><br><br>
       <% end %>
     <% end %>
   <% end %>
-<% end %>
-<%= link_to 'Back', movie_path(params[:movie_id]),class: "btn btn-secondary btn-sm"%>
+  <%= link_to 'Back', movie_path(params[:movie_id]),class: "btn btn-secondary btn-sm" %>
 </div>

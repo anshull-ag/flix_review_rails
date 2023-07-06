@@ -1,8 +1,9 @@
 <div class="reviews-container-left"><br><br>
+  
   <% if flash[:error] %>
-  <div style="color: red;">
-    <%= flash[:error] %>
-  </div>
+    <div style="color: red;">
+      <%= flash[:error] %>
+    </div>
   <% end %>
   
   <%= form_with model: @movie do |form| %>
@@ -35,15 +36,14 @@
       <span style="color: white"><%= form.label :star_cast ,style: "color: white;"%><br>
       <%= form.text_field :star_cast %></span>
     </div>
-
-
+    
     <div>
       <%= form.label :main_image,style: "color: white;" %>
       <%= form.file_field :main_image %>
     <div><br>
 
     <div>
-    <%= form.submit %>
+      <%= form.submit %>
     </div>
-  <% end %>
+  <% end %> 
 </div>

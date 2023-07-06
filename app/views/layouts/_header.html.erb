@@ -25,13 +25,13 @@
                <% end %>
             </ul>
           </div>
-         <%= form_tag search_path, method: 'get', class: 'col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3', style: 'display: flex;' do %>
-          <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search Movies' %>
-          <%= button_tag type: 'submit', class: 'btn btn-primary' do %>
-            <i class="fa fa-search"></i>
+          <%= form_tag search_path, method: 'get', class: 'col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3', style: 'display: flex;' do %>
+            <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search Movies' %>
+            <%= button_tag type: 'submit', class: 'btn btn-primary' do %>
+              <i class="fa fa-search"></i>
+            <% end %>
           <% end %>
-        <% end %>
-
+        </ul>
       </div>
       <class="right">
         <% if user_signed_in? %>
@@ -43,5 +43,4 @@
         <% end %>
     </div>
   </nav>
-
 <header>

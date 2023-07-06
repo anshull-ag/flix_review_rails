@@ -1,49 +1,49 @@
 <div class="reviews-container-left"><br>
-<h1 style="color: white"> Enter Detail Here </h1>
-<% if flash[:error] %>
-  <div style="color: red;">
-    <%= flash[:error] %>
-  </div>
-<% end %>
+  <h1 style="color: white"> Enter Detail Here </h1>
+  <% if flash[:error] %>
+    <div style="color: red;">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
 
-<%= form_with model: @movie do |form| %>
-  <div>
-    <span style="color: white"><%= form.label :name %><br>
-    <%= form.text_field :name %></span>
-  </div>
+  <%= form_with model: @movie do |form| %>
+    <div>
+      <span style="color: white"><%= form.label :name %><br>
+      <%= form.text_field :name %></span>
+    </div>
 
-  <div>
-    <span style="color: white"><%= form.label :rating %><br>
-    <%= form.text_field :rating %></span>
-  </div>
+    <div>
+      <span style="color: white"><%= form.label :rating %><br>
+      <%= form.text_field :rating %></span>
+    </div>
 
-  <div>
-    <span style="color: white"><%= form.label :description %><br>
-    <%= form.text_area :description %></span>
-  </div>
+    <div>
+      <span style="color: white"><%= form.label :description %><br>
+      <%= form.text_area :description %></span>
+    </div>
 
-  <div>
-    <span style="color: white"><%= form.label :released_date %><br>
-    <%= form.date_field  :released_date %></span>
-  </div><br>
+    <div>
+      <span style="color: white"><%= form.label :released_date %><br>
+      <%= form.date_field  :released_date %></span>
+    </div><br>
 
-  <div class="field">
-    <span style="color: white"><%= form.label :category_id %>
-    <%= form.collection_select :category_id, Category.all, :id, :name %></span>
-  </div><br>
+    <div class="field">
+      <span style="color: white"><%= form.label :category_id %>
+      <%= form.collection_select :category_id, Category.all, :id, :name %></span>
+    </div><br>
 
-  <div>
-    <span style="color: white"><%= form.label :star_cast %><br>
-    <%= form.text_field :star_cast %></span>
-  </div>
+    <div>
+      <span style="color: white"><%= form.label :star_cast %><br>
+      <%= form.text_field :star_cast %></span>
+    </div>
 
-  <div>
-    <span style="color: white"><%= form.label :main_image %>
-    <%= form.file_field :main_image %></span>
-  <div><br>
-    
-  <div>
-     <span style="color: white"><%= form.submit %></span>
-  </div>
-<% end %>
+    <div>
+      <span style="color: white"><%= form.label :main_image %>
+      <%= form.file_field :main_image %></span>
+    <div><br>
+      
+    <div>
+       <span style="color: white"><%= form.submit %></span>
+    </div>
+  <% end %>
 </div>
