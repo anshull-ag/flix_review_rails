@@ -10,5 +10,12 @@ FactoryBot.define do
     after(:build) do |movie|
       movie.reviews << build_list(:review, 3, movie: movie)
     end
+
+    trait :with_reviews do
+      after(:create) do |movie|
+        create_list(:review, 5, movie: movie)
+      end
+    end
   end
 end
+

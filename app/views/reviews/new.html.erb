@@ -1,25 +1,24 @@
 <div class="reviews-container-left">
-<h1 class="black-heading"> Write Review Here </h1>
+  <h1 class="black-heading"> Write Review Here </h1>
+  <% if flash[:error] %>
+    <div style="color: red;">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
+  
+  <%= form_for [@movie,@review] do |form| %>
+    <div>
+      <%= form.label :Review, style: "color: white" ; %><br>
+      <%= form.text_area :body%>
+    </div>
 
-<% if flash[:error] %>
-  <div style="color: red;">
-    <%= flash[:error] %>
-  </div>
-<% end %>
+    <div>
+      <%= form.label :star, style: "color: white" ; %><br>
+      <%= form.number_field :star, in: 0..5, step: 0.5 %>
+    </div>
 
-<%= form_for [@movie,@review] do |form| %>
-  <div>
-    <%= form.label :Review, style: "color: white" ; %><br>
-    <%= form.text_area :body%>
-  </div>
-
-  <div>
-    <%= form.label :star, style: "color: white" ; %><br>
-    <%= form.number_field :star, in: 0..5, step: 0.5 %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
 </div>
