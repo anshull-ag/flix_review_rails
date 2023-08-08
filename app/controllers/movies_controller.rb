@@ -67,7 +67,6 @@ class MoviesController < ApplicationController
   end
   
   def search
-    byebug
     movie = params[:search]
     @search = Movie.where('name LIKE ?', "%#{movie}%")
                      
