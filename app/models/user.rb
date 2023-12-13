@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   after_initialize :set_defaults
   after_create :welcome_email
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   validates :name, presence: true
 
   # Include default devise modules. Others available are:
