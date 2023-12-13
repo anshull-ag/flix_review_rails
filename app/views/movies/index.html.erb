@@ -8,7 +8,7 @@
   <div class="movie-grid">
     <% @movies.each do |movie| %>
       <div class="movie-item">
-        <%= link_to image_tag(movie.main_image,class: 'movie-image'),movie %>
+        <%= link_to image_tag(movie.main_image,class: 'movie-image'), movie_path(movie) %>
         <h2  style="color: white"><%= movie.name %></h2>
         <h6 style="color: white"> Category:<%= movie.category.name %></h6>
       </div>
